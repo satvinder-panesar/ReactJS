@@ -28,7 +28,8 @@ class Home extends Component {
               </Navbar.Brand>
             </Navbar.Header>
           </Navbar>
-            
+            <div className = "splitscreen">
+            <div className = "left">
             {data 
               && 
             <div>
@@ -38,21 +39,22 @@ class Home extends Component {
               {data.tags.map((tag)=><Tags tag={tag} key={tag}/>)}
             </div>
             }       
-
-        
+            </div>
+            <div className = "right">
+            <div class="table-style">
             {data
               &&
-              <Table responsive>
-              <thead>
-                <tr>
-                  <th>Week Ending</th>
-                  <th>Retail Sales</th>
-                  <th>Whole Sales</th>
-                  <th>Units Sold</th>
-                  <th>Retailer Margin Sold</th>
-                </tr>
-              </thead>
-              <tbody>
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Week Ending</th>
+                    <th scope="col">Retail Sales</th>
+                    <th scope="col">Wholesale Sales</th>
+                    <th scope="col">Units Sold</th>
+                    <th scope="col">Retailer Margin</th>
+                  </tr>
+                </thead>
+                <tbody>
               {data.sales.map((sale, index)=> 
                 <tr key={index}>
                   <td>{sale.weekEnding}</td>
@@ -63,9 +65,11 @@ class Home extends Component {
                 </tr>
                 )}
               </tbody>
-              </Table>
+              </table>
             }
-          
+          </div>
+          </div>
+          </div>
       </div>
     );
   }

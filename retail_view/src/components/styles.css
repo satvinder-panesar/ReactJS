@@ -1,9 +1,26 @@
-
+.splitscreen {
+    display:flex;
+}
+.splitscreen .left {
+    flex: 1;
+}
+.splitscreen .right {
+    flex: 2.8;
+}
 .tag-background{
   background-color: #dae2f2;
+  width:100px;
+  margin-top: 2px;
 }
 
 .product-image-size{
   width: 200px;
   height: 200px;
+}
+
+.table-style {
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
