@@ -9,6 +9,7 @@ export function* getDataFromFile() {
     console.log("saga reached");
     const data = yield call(callNewsApi);
     console.log(data);
+    yield put({type:"RETAIL_DATA_SUCCESS",retail_data:data});
 }
 
 export const getRetailData = [
