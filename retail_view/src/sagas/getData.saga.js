@@ -7,11 +7,11 @@ function readFile(){
 
 export function* getDataFromFile() {
     console.log("saga reached");
-    const data = yield call(callNewsApi);
+    const data = yield call(readFile);
     console.log(data);
     yield put({type:"RETAIL_DATA_SUCCESS",retail_data:data});
 }
 
 export const getRetailData = [
-    takeLatest("RETAIL_DATA_REQUEST", getDataFromFile);
+    takeLatest("RETAIL_DATA_REQUEST", getDataFromFile)
 ]
