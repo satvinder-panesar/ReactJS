@@ -2,7 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects";
 
 function readFile(){
 	console.log("read file operation")
-	return "retail data"
+	return "retail data it is"
 }
 
 export function* getDataFromFile() {
