@@ -1,8 +1,10 @@
 import { call, put, takeLatest } from "redux-saga/effects";
+import axios from 'axios';
 
 function readFile(){
 	console.log("read file operation")
-	return "retail data it is"
+	return axios.get('http://localhost:8088/getRetailData')
+	.then((response)=>response.data[0])
 }
 
 export function* getDataFromFile() {
