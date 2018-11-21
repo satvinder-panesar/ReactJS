@@ -6,8 +6,14 @@ class Table1 extends Component {
 
   constructor(){
       super();
-      this.state = {enableTable2Page: false}
+      this.state = {enableTable2Page: false, sales_data: null}
       this.handleClick = this.handleClick.bind(this)
+  }
+
+  componentWillMount(){
+    fetch('http://127.0.0.1:5000/getTable1Data')
+    .then((response) => response.json())
+    .then((json) => {console.log(json)})
   }
 
   handleClick(){
