@@ -49,8 +49,26 @@ class Table1 extends Component {
     })
   }
 
-  handleClick(){
-    this.setState({enableTable2Page: true})
+  handleClick(event){
+    if(event.target.name == "table2"){
+      this.setState({enableTable2Page: true})
+    }else{
+      fetch('http://127.0.0.1:5000/saveToTable2',{
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "domains="+this.state.options['xaxis']['categories']+"&stock_values="+this.state.series[0]['data']
+      })
+      .then((response) => response.json())
+      .then((json) =>{
+          if(json.status == "OK"){
+            alert("Data Saved to Table2")
+          }else{
+            alert("Issue while storing")
+          }
+      })
+    }
   }
 
   render() {
@@ -78,9 +96,14 @@ class Table1 extends Component {
                 width="500"
               />}
               <Grid>
-                  <Button name ="table2" bsStyle="primary" bsSize="large" block onClick = {this.handleClick}>
-                    Go to table2
-                  </Button>
+                <Button name ="table2" bsStyle="primary" bsSize="large" block onClick = {this.handleClick}>
+                  Go to table2
+                </Button>
+                <br />
+              
+                <Button name ="save" bsStyle="primary" bsSize="large" block onClick = {this.handleClick}>
+                  Save to table2
+                </Button>
               </Grid>        
             </Jumbotron>        
           </center>
