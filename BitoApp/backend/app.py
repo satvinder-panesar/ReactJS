@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_pymongo import PyMongo
 from flask_cors import CORS
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -16,10 +17,9 @@ def table1_data():
 		# get existing details
 		record_id = ele['record_id']
 		domain = ele['domain']
-		stock_value = ele['stock_value']
 
 		# update details
-		stock_value += 1
+		stock_value = random.randint(1, 200)
 
 		# update records in db
 		mongo.db.table1.update({'record_id': record_id}, {'record_id' : record_id, 'domain': domain, 'stock_value': stock_value})
