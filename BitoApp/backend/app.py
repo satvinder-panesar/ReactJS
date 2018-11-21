@@ -9,26 +9,23 @@ mongo = PyMongo(app)
 
 @app.route("/getTable1Data")
 def table1_data():
-	sales_data = mongo.db.table1.find()
+	stock_data = mongo.db.table1.find()
 	output = []
-	for ele in sales_data:
+	for ele in stock_data:
 
 		# get existing details
 		record_id = ele['record_id']
-		retail_sales = ele['retail_sales']
-		whole_sales = ele['whole_sales']
-		units_sold = ele['units_sold']
+		domain = ele['domain']
+		stock_value = ele['stock_value']
 
 		# update details
-		retail_sales += 1
-		whole_sales += 1
-		units_sold += 1
+		stock_value += 1
 
 		# update records in db
-		mongo.db.table1.update({'record_id': record_id}, {'record_id' : record_id, 'retail_sales': retail_sales, 'whole_sales': whole_sales, 'units_sold': units_sold})
+		mongo.db.table1.update({'record_id': record_id}, {'record_id' : record_id, 'domain': domain, 'stock_value': stock_value})
 
 		# prepare output
-		output.append({'record_id' : record_id, 'retail_sales' : retail_sales, 'whole_sales' : whole_sales, 'units_sold': units_sold})
+		output.append({'record_id' : record_id, 'domain': domain, 'stock_value': stock_value})
 	
 	return jsonify({'result' : output})
 
