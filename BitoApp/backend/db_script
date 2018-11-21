@@ -9,7 +9,9 @@ db.createUser({
 db.createCollection("table1")
 db.createCollection("table2")
 
-db.table1.insert({retail_sales: 100, whole_sales: 50, units_sold: 25})
-db.table1.insert({retail_sales: 200, whole_sales: 100, units_sold: 50})
+db.table1.remove({})
+
+db.table1.insert({record_id: 1, retail_sales: 100, whole_sales: 50, units_sold: 25})
+db.table1.insert({record_id: 2, retail_sales: 200, whole_sales: 100, units_sold: 50})
 
 db.table1.find()
