@@ -15,17 +15,16 @@ def table1_data():
 	for ele in stock_data:
 
 		# get existing details
-		record_id = ele['record_id']
 		domain = ele['domain']
 
 		# update details
 		stock_value = random.randint(1, 200)
 
 		# update records in db
-		mongo.db.table1.update({'record_id': record_id}, {'record_id' : record_id, 'domain': domain, 'stock_value': stock_value})
+		mongo.db.table1.update({'domain': domain}, {'domain': domain, 'stock_value': stock_value})
 
 		# prepare output
-		output.append({'record_id' : record_id, 'domain': domain, 'stock_value': stock_value})
+		output.append({'domain': domain, 'stock_value': stock_value})
 	
 	return jsonify({'result' : output})
 

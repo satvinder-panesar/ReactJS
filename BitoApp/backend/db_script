@@ -11,7 +11,7 @@ db.createCollection("table2")
 
 db.table1.remove({})
 
-db.table1.insert({record_id: 1, domain: 'banking', stock_value: 50})
-db.table1.insert({record_id: 2, domain: 'telecom', stock_value: 100})
+db.table1.insert({domain: 'banking', stock_value: 50})
+db.table1.insert({domain: 'telecom', stock_value: 100})
 
 db.table1.find()
