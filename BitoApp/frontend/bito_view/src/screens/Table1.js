@@ -9,9 +9,18 @@ class Table1 extends Component {
       super();
       this.state = {enableTable2Page: false, options: null, series: null}
       this.handleClick = this.handleClick.bind(this)
+      this.loadData = this.loadData.bind(this)
   }
 
   componentWillMount(){
+    this.loadData()
+  }
+
+  componentDidMount(){
+    setInterval(this.loadData, 5 * 1000);
+  }
+
+  async loadData() {
     fetch('http://127.0.0.1:5000/getTable1Data')
     .then((response) => response.json())
     .then((json) => {
