@@ -38,5 +38,20 @@ def save_to_table2():
 		mongo.db.table2.insert({'domain': domain, 'stock_value': stock_values[index]})
 	return jsonify({'status' : 'OK'})
 
+@app.route("/getTable2Data")
+def get_table2_data():
+	stock_data = mongo.db.table2.find().limit(100)
+	output = []
+	for ele in stock_data:
+
+		# get existing details
+		domain = ele['domain']
+		stock_value = ele['stock_value']
+
+		# prepare output
+		output.append({'domain': domain, 'stock_value': stock_value})
+	
+	return jsonify({'result' : output})
+
 if __name__ == '__main__':
 	app.run(debug=True)
