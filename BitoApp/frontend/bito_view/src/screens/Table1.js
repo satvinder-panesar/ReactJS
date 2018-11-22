@@ -17,7 +17,7 @@ class Table1 extends Component {
   }
 
   componentDidMount(){
-    setInterval(this.loadData, 5 * 1000);
+    setInterval(this.loadData, 10 * 1000);
   }
 
   async loadData() {
