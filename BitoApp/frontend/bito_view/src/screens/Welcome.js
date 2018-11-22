@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {Row, Col, FormGroup, FormControl, InputGroup, PageHeader, ButtonToolbar, Jumbotron, Button, Grid} from 'react-bootstrap';
+import {PageHeader, Jumbotron, Button, Grid} from 'react-bootstrap';
 
 class Welcome extends Component {
 

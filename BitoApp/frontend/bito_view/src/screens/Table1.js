@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
-import {Row, Col, FormGroup, FormControl, InputGroup, PageHeader, ButtonToolbar, Jumbotron, Button, Grid} from 'react-bootstrap';
+import {PageHeader, Jumbotron, Button, Grid} from 'react-bootstrap';
 import Chart from "react-apexcharts";
 
 class Table1 extends Component {
@@ -50,7 +50,7 @@ class Table1 extends Component {
   }
 
   handleClick(event){
-    if(event.target.name == "table2"){
+    if(event.target.name === "table2"){
       this.setState({enableTable2Page: true})
     }else{
       fetch('http://127.0.0.1:5000/saveToTable2',{
@@ -62,7 +62,7 @@ class Table1 extends Component {
       })
       .then((response) => response.json())
       .then((json) =>{
-          if(json.status == "OK"){
+          if(json.status === "OK"){
             alert("Data Saved to Table2")
           }else{
             alert("Issue while storing")
