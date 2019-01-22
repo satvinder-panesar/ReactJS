@@ -1,0 +1,85 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.title{
+  flex: 1;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.body{
+  flex: 15;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, white, #c9c7c5);
+  overflow: true
+}
+.display-counts{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.count{
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-weight: 20px;
+  border-radius: 25px;
+  min-width: 25vw;
+  min-height: 5vh;
+  padding-top: 15px;
+  padding-bottom: 6px;
+  margin-top: 20px;
+}
+.charts{
+  flex:3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 120px;
+}
+.chart{
+  flex:1;
+  font-weight: bold;
+}
+
+.list{
+  flex: 6;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.list-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.list-item{
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  justify-content: center;
+  color: white;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+.list-element{
+  flex: 1;
+  font-size: 20px;
+  font-weight: bold;
+}
