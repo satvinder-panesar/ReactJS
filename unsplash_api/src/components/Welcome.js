@@ -11,8 +11,8 @@ class Welcome extends Component {
     this.state = {user: null, selected_user: null, users: null}
   }
 
-  selectUser(user){
-    this.setState({selected_user: user})
+  selectUser(data){
+    this.setState({selected_user: data['name']})
   }
 
   handleChange(event){
@@ -32,7 +32,7 @@ class Welcome extends Component {
           .then((response) => response.json())
           .then((json) => {
             for(let i in json['results']){
-              temp.push(json['results'][i]['name'])
+              temp.push(json['results'][i])
             }
           })
       this.setState({users: temp})
@@ -46,7 +46,7 @@ class Welcome extends Component {
           <div className = "user-list">
             <input type = "text" className = "search-bar" onChange = {this.handleChange} />
             <input type = "button" className = "search-button" name = "search-button" value = "Search" onClick = {this.handleSearch}/>
-            {this.state.users.map((user)=><div key = {user} className = "user-name" onClick = {()=>this.selectUser(user)}> {user}</div>)}
+            {this.state.users.map((data)=><div key = {data['id']} className = "user-name" onClick = {()=>this.selectUser(data)}> {data['name']}</div>)}
           </div>
           <div className = "photos">
             Photos {this.state.selected_user}
