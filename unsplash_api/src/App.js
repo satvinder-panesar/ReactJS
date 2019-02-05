@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {authorized: null, access_token: null}
   }
 
-  async componentDidMount() {
+  /*async componentDidMount() {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     await fetch('https://unsplash.com/oauth/token',{
@@ -23,7 +23,7 @@ class App extends Component {
         .then((response) => response.json())
         .then((json) => this.setState({authorized: true, access_token: json['access_token']}))
     console.log(this.state.access_token)
-  }
+  }*/
 
   render() {
     return (
@@ -32,7 +32,7 @@ class App extends Component {
           <a
               href={`https://unsplash.com/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3000/`}
           >Authorize</a></center>}
-        {this.state.access_token && <Welcome />}
+        {!this.state.access_token && <Welcome />}
        </div>
     );
   }
