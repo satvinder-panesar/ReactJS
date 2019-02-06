@@ -48,7 +48,7 @@ class Welcome extends Component {
           <div className = "user-list">
             <input type = "text" className = "search-bar" onChange = {this.handleChange} />
             <input type = "button" className = "search-button" name = "search-button" value = "Search" onClick = {this.handleSearch}/>
-            {this.state.users && this.state.users.map((data)=><div key = {data['id']}>{data['name']}</div>)}
+            {this.state.users && this.state.users.map((data)=><div onClick = {()=>this.selectUser(data)}className = "user-name" key = {data['id']}>{data['name']}</div>)}
           </div>
           <div className = "photos">
             Photos {this.state.selected_user}
