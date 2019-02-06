@@ -8,11 +8,15 @@ class Welcome extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.selectUser = this.selectUser.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
-    this.state = {user: null, selected_user: null, users: null}
+    this.state = {user: null, users: null, photos: null}
   }
 
   selectUser(data){
-    this.setState({selected_user: data['name']})
+    let temp = []
+    for(let i in data['photos']){
+      temp.push(data['photos'][i]['urls']['regular'])
+    }
+    this.setState({photos: temp})
   }
 
   handleChange(event){
@@ -20,10 +24,10 @@ class Welcome extends Component {
   }
 
   async handleSearch(){
-    if(this.state.user == null){
+    if(this.state.user == null || this.state.user == ""){
+      this.setState({photos: null})
       alert("Enter Username")
     }else{
-      let temp = []
       await fetch('https://api.unsplash.com/search/users?query='+this.state.user,{
             method: "get",
             headers: {
@@ -51,7 +55,7 @@ class Welcome extends Component {
             {this.state.users && this.state.users.map((data)=><div onClick = {()=>this.selectUser(data)}className = "user-name" key = {data['id']}>{data['name']}</div>)}
           </div>
           <div className = "photos">
-            Photos {this.state.selected_user}
+            {this.state.photos && this.state.photos.map((photo)=><img alt = "img" key = {photo} className = "image" src = {photo} />)}
           </div>
         </div>
         <div className = "footer">

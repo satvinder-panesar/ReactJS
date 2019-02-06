@@ -27,10 +27,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        {!this.state.access_token && <center>
-          <a
+        {!this.state.access_token && <center><br />
+          <h2><a
               href={`https://unsplash.com/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3000/`}
-          >Authorize</a></center>}
+          >Authorize</a></h2></center>}
         {this.state.access_token && <Welcome access_token = {this.state.access_token} />}
        </div>
     );
