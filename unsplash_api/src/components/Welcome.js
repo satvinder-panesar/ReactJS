@@ -5,9 +5,9 @@ class Welcome extends Component {
 
   constructor(){
     super()
-    this.handleSearch = this.handleSearch.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.selectUser = this.selectUser.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
     this.state = {user: null, selected_user: null, users: null}
   }
 
@@ -31,13 +31,15 @@ class Welcome extends Component {
             }})
           .then((response) => response.json())
           .then((json) => {
+            let temp = []
             for(let i in json['results']){
               temp.push(json['results'][i])
             }
+            this.setState({users: temp})
           })
-      this.setState({users: temp})
+    }
   }
-  }
+  
 
   render() {
     return (
@@ -46,7 +48,7 @@ class Welcome extends Component {
           <div className = "user-list">
             <input type = "text" className = "search-bar" onChange = {this.handleChange} />
             <input type = "button" className = "search-button" name = "search-button" value = "Search" onClick = {this.handleSearch}/>
-            {this.state.users.map((data)=><div key = {data['id']} className = "user-name" onClick = {()=>this.selectUser(data)}> {data['name']}</div>)}
+            {this.state.users && console.log(this.state.users)}
           </div>
           <div className = "photos">
             Photos {this.state.selected_user}
