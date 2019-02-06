@@ -22,7 +22,6 @@ class App extends Component {
         })
         .then((response) => response.json())
         .then((json) => this.setState({authorized: true, access_token: json['access_token']}))
-    console.log(this.state.access_token)
   }
 
   render() {
