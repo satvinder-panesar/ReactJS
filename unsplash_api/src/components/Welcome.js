@@ -24,7 +24,7 @@ class Welcome extends Component {
   }
 
   async handleSearch(){
-    if(this.state.user == null || this.state.user == ""){
+    if(this.state.user == null || this.state.user === ""){
       this.setState({photos: null})
       alert("Enter Username")
     }else{
