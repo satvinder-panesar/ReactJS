@@ -16,7 +16,7 @@ class App extends Component {
   handleSelect = async (block) => {
     let data = await fetch(`https://cors-anywhere.herokuapp.com/https://blockchain.info/rawblock/${block}`)
     data = await data.json()
-    data = data.tx.slice(0,18)
+    data = data.tx.slice(0,15)
     let temp = []
     for(let ele in data){
       temp.push(data[ele].tx_index)
@@ -47,18 +47,18 @@ class App extends Component {
               <div className="LatestLabelContent">Latest Block Index: {this.state.latest_block.block_index}</div> 
               <div className="LatestLabelContent">Number of Txs: {this.state.latest_block.txIndexes.length}</div>
               <div className="LatestLabelContent">
-                <input className="ActionButton" type="button" value={this.state.displayLatest ? "Back to Home" : "View More Details"} onClick={this.handleClick} />
+                <input className="ActionButton" type="button" value={this.state.displayLatest ? "Back to Home" : "View Latest Txs"} onClick={this.handleClick} />
               </div>
             </div>
           }
         </div>
         <div className="DisplaySection">
-          {this.state.displayLatest && !this.state.displayTxView && <TxView txs={this.state.latest_block.txIndexes.slice(0,18)} />}
+          {this.state.displayLatest && !this.state.displayTxView && <TxView txs={this.state.latest_block.txIndexes.slice(0,15)} />}
           {!this.state.displayLatest && !this.state.displayTxView && 
             this.state.blocks && 
             <div>
-              <h3>Select any block hash to view</h3>
-              {this.state.blocks.slice(0,6).map((block,i)=><li onClick={this.handleSelect.bind(this,block.hash)} key={i}>{block.hash}</li>)}
+              <h3>Select any hash to view block details:</h3>
+              {this.state.blocks.slice(0,6).map((block,i)=><li onClick={this.handleSelect.bind(this,block.hash)} key={i}>Block{i+1} : Ending {block.hash.slice(block.hash.length-10,block.hash.length)}</li>)}
             </div>
           }
           {this.state.displayTxView && this.state.displayLatest && this.state.txs &&

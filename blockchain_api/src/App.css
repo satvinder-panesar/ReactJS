@@ -62,6 +62,8 @@
 
 .Txs {
   flex: 2;
+  font-size: 15px;
+  line-height: 25px;
 }
 
 .TxsDetail{
