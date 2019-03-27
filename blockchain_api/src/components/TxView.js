@@ -20,8 +20,8 @@ class TxView extends Component{
 		return(
 			<div className="TxView">
 				<div className="Txs">
-					<div><h3>Select a Tx to view details</h3></div>
-					<div>{this.props.txs.slice(0,15).map((tx,i) => <li onClick={this.handleClick.bind(this,tx)} key={i}>{tx}</li>)}</div>
+					<div><h4>Select a Tx to view details</h4></div>
+					<div>{this.props.txs.map((tx,i) => <li onClick={this.handleClick.bind(this,tx)} key={i}>{tx}</li>)}</div>
 				</div>
 				<div className="TxsDetail">
 					<h3>Tx Details</h3>
