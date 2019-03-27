@@ -33,10 +33,10 @@ class App extends Component {
         <div className="LatestBlock">
           {this.state.latest_block &&
             <div className="LatestBlockContents">
-              <div className="LatestLabelContent">Latest Block: {this.state.latest_block.block_index}</div> 
+              <div className="LatestLabelContent">Latest Block Index: {this.state.latest_block.block_index}</div> 
               <div className="LatestLabelContent">Number of Txs: {this.state.latest_block.txIndexes.length}</div>
               <div className="LatestLabelContent">
-                <input type="button" value={this.state.displayLatest ? "Back to Home" : "View More"} onClick={this.handleClick} />
+                <input className="ActionButton" type="button" value={this.state.displayLatest ? "Back to Home" : "View More Details"} onClick={this.handleClick} />
               </div>
             </div>
           }

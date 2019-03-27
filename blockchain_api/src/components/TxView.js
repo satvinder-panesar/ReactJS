@@ -13,7 +13,6 @@ class TxView extends Component{
 		this.setState({selectedTx: tx})
 		let data = await fetch(`https://cors-anywhere.herokuapp.com/https://blockchain.info/rawtx/${tx}`)
 	    data = await data.json()
-	    console.log(data)
 	    this.setState({txDetails: data})
 	}
 
@@ -21,8 +20,8 @@ class TxView extends Component{
 		return(
 			<div className="TxView">
 				<div className="Txs">
-					<div>Select a Tx to view details</div>
-					<div>{this.props.txs.slice(0,20).map((tx,i) => <li onClick={this.handleClick.bind(this,tx)} key={i}>{tx}</li>)}</div>
+					<div><h3>Select a Tx to view details</h3></div>
+					<div>{this.props.txs.slice(0,15).map((tx,i) => <li onClick={this.handleClick.bind(this,tx)} key={i}>{tx}</li>)}</div>
 				</div>
 				<div className="TxsDetail">
 					<h3>Tx Details</h3>

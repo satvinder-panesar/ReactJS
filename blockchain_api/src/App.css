@@ -69,3 +69,11 @@
   font-weight: bold;
   line-height: 50px;
 }
+
+.ActionButton{
+  border-radius: 50px;
+  width: 150px;
+  height: 50px;
+  background-color: white;
+  font-weight: bold;
+}
