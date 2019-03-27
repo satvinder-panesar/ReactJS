@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
+import TxView from './components/TxView';
 
 class App extends Component {
 
   constructor(){
     super()
-    this.state = {latest_block: null, blocks: null, index: 0}
+    this.state = {latest_block: null, blocks: null, index: 0, displayLatest: false}
+  }
+
+  handleClick = () => {
+    this.setState({displayLatest: !this.state.displayLatest})
   }
 
   componentDidMount = async () =>{
-    let data = await fetch("https://cors-anywhere.herokuapp.com/https://blockchain.info/latestblock", {
-      'Content-Type': 'application/json'
-    })
+    let data = await fetch("https://cors-anywhere.herokuapp.com/https://blockchain.info/latestblock")
     data = await data.json()
-    console.log(data)
     this.setState({latest_block: data})
     data = await fetch(`https://cors-anywhere.herokuapp.com/https://blockchain.info/blocks/${Date.now()}?format=json`, {
       'Content-Type': 'application/json'
     })
     data = await data.json()
-    console.log(data)
     this.setState({blocks: data})
   }
 
@@ -30,11 +31,19 @@ class App extends Component {
           <h2>Chainyard Dashboard: Blockchain</h2>
         </div>
         <div className="LatestBlock">
-          Latest
+          {this.state.latest_block &&
+            <div className="LatestBlockContents">
+              <div className="LatestLabelContent">Latest Block: {this.state.latest_block.block_index}</div> 
+              <div className="LatestLabelContent">Number of Txs: {this.state.latest_block.txIndexes.length}</div>
+              <div className="LatestLabelContent">
+                <input type="button" value={this.state.displayLatest ? "Back to Home" : "View More"} onClick={this.handleClick} />
+              </div>
+            </div>
+          }
         </div>
         <div className="DisplaySection">
-          Content
-        </div>
+          {this.state.displayLatest && <TxView txs={this.state.latest_block.txIndexes} />}
+        </div>        
       </div>
     );
   }

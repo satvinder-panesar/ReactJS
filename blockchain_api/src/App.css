@@ -19,20 +19,53 @@
 }
 
 .LatestBlock {
-  flex: 2;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  flex: 1;
+  padding-top: 5px;
+  padding-bottom: 15px;
   margin-top: 20px;
   width: 80vw;
   background-color: #98999b;
+}
+
+.LatestBlockContents {
+  display: flex;
+  flex-direction: row;
+}
+
+.LatestLabelContent {
+  padding-top: 25px;
+  padding-bottom: 10px;
+  flex: 1;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .DisplaySection {
   flex: 6;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   width: 95vw;
   background-color: #98999b;
 
+}
+
+.TxView {
+  display:flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.Txs {
+  flex: 2;
+}
+
+.TxsDetail{
+  flex: 6;
+  background-color: #4b4d4f;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 50px;
 }
